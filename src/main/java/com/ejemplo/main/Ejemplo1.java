@@ -13,7 +13,7 @@ public class Ejemplo1 {
 //        System.out.println("El nombre del vehiculo sin spring es: " + vehiculo.getName());
 
         var contexto = new AnnotationConfigApplicationContext(ProjectConfig.class);
-        Vehiculo veh1 = contexto.getBean("coche1", Vehiculo.class);
+        Vehiculo veh1 = contexto.getBean(Vehiculo.class);
         System.out.println("El vehiculo con con spring es: " + veh1.getName());
 
         Vehiculo veh2 = contexto.getBean("coche2", Vehiculo.class);
