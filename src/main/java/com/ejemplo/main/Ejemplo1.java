@@ -5,6 +5,8 @@ import com.ejemplo.beans.Vehiculo;
 import com.ejemplo.config.ProjectConfig;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
+import java.util.function.Supplier;
+
 public class Ejemplo1 {
 
     public static void main(String[] args) {
@@ -13,13 +15,15 @@ public class Ejemplo1 {
 //        System.out.println("El nombre del vehiculo sin spring es: " + vehiculo.getName());
 
         var contexto = new AnnotationConfigApplicationContext(ProjectConfig.class);
-        Vehiculo veh1 = contexto.getBean(Vehiculo.class);
-        System.out.println("El vehiculo con con spring es: " + veh1.getName());
+//        Vehiculo veh1 = contexto.getBean(Vehiculo.class);
+        Vehiculo coche = new Vehiculo();
+        coche.setName("Coche");
+        Supplier<Vehiculo> cocheSupplier = () -> coche;
 
-        Vehiculo veh2 = contexto.getBean("coche2", Vehiculo.class);
-        System.out.println("El vehiculo con con spring es: " + veh2.getName());
-
-        Vehiculo veh3 = contexto.getBean("coche3", Vehiculo.class);
-        System.out.println("El vehiculo con con spring es: " + veh3.getName());
+        Supplier<Vehiculo> motoSupplier = () -> {
+            Vehiculo moto = new Vehiculo();
+            moto.setName("Moto");
+            return moto;
+        };
     }
 }
