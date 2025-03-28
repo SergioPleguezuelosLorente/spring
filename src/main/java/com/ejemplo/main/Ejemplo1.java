@@ -25,5 +25,11 @@ public class Ejemplo1 {
             moto.setName("Moto");
             return moto;
         };
+
+        Supplier<Vehiculo> motoSupplier2 = () -> {
+            Vehiculo moto = new Vehiculo();
+            moto.setName("Moto");
+            return moto;
+        };
     }
 }
